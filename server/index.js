@@ -10,6 +10,7 @@ const fs = require("fs");
 const mysql = require("mysql2");
 const { execSync } = require('child_process');
 const upload = multer({dest: "uploads/", limits:{fieldSize: 25 * 1024 * 1024}});
+const PORT = process.env.PORT || 8000;
 
 app.post("/upload", upload.single("file"), (req, res) => {
   // Read the contents of the uploaded file
@@ -53,6 +54,6 @@ app.post("/upload", upload.single("file"), (req, res) => {
   });
 });
 
-app.listen(8000, () => {
+app.listen(PORT, () => {
     console.log('Listening on port 8000!');
 })
