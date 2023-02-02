@@ -26,7 +26,7 @@ npm start
 
 ![Files to backend](https://user-images.githubusercontent.com/72285744/216267430-ec1ae1a9-3955-457b-8792-2a793fe2b056.png)
 
-4. Sql Database schema.
+4. SQL Database schema.
 
 
 ![database schema](https://user-images.githubusercontent.com/72285744/216267593-146b2a2b-20d3-4642-8787-67dd5ca2f22b.png)
