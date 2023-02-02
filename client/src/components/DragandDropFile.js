@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useDropzone } from "react-dropzone";
 import BackupRoundedIcon from "@mui/icons-material/BackupRounded";
-import { IconButton } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
 import { Box } from "@mui/material";
 
 
@@ -24,7 +24,7 @@ function DragandDropFile({ file, handleFileChange }) {
           p: 5,
           width: "40%",
           border: "1px dashed",
-          borderColor: "black",
+          borderColor: "white",
           borderRadius: '3%',
           display: "flex",
           alignItems: "center",
@@ -32,10 +32,10 @@ function DragandDropFile({ file, handleFileChange }) {
         }}
       >
         <input {...getInputProps()} type="file"/>
-        <IconButton>
+        <IconButton sx={{color: 'white'}}>
           <BackupRoundedIcon />
         </IconButton>
-        <p>Drag and drop some files here, or click to select files</p>
+        <Typography poppins="true" sx={{color: "white"}}>Drag and drop some files here, or click to select files</Typography>
       </Box>
   );
 }

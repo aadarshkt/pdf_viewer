@@ -7,7 +7,7 @@ import { Button, createTheme, Typography } from "@mui/material";
 import DragandDropFile from "./components/DragandDropFile";
 import Header from "./components/Header";
 import { ThemeProvider } from "@emotion/react";
-import SendIcon from '@mui/icons-material/Send';
+import SendIcon from "@mui/icons-material/Send";
 
 const theme = createTheme({
   typography: {
@@ -53,46 +53,58 @@ function App() {
     await axios
       .post("http://localhost:8000/upload", data)
       .then((res) => {
-        setLoading(false)
+        setLoading(false);
         console.log(res);
-        alert("File sent to backend successfully.Check console for details.")
+        alert("File sent to backend successfully.Check console for details.");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        alert("Backend not responding because it not deploy. App tested Locally. See console Log for details");
+        console.log(err);
+      });
   };
+
   return (
     <ThemeProvider theme={theme}>
       <Box
-        sx={{ display: "flex", flexDirection: "column", width: "100%", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          height: '100%',
+          minHeight: '100vh',
+          justifyContent: "start",
+          alignItems: "center",
+          backgroundColor: '#4158D0',
+          background: "linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%)",
+        }}
       >
         <Header />
         {file ? (
-          <Box sx={{ display: "flex", flexDirection: 'column', width: "50%" }}>
+          <Box sx={{ display: "flex", flexDirection: "column", width: "50%" }}>
             <Box
               sx={{
                 display: "flex",
                 width: "100%",
                 justifyContent: "center",
-                alignItems: 'center',
+                alignItems: "center",
                 p: 4,
                 alignItems: "center",
               }}
             >
-              <Box sx={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
-              <FileUploadButton
-                file={file}
-                handleFileChange={handleFileChange}
-                label="Upload new file"
-              ></FileUploadButton>
-              <Typography sx={{ fontWeight: "bold" }} poppins="true">
-                OR
-              </Typography>
-              <Button onClick={handleSubmit} variant="outlined" sx={{ mx: 2 }} endIcon={<SendIcon />}>
-                Submit this file
-              </Button>
+              <Box sx={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+                <FileUploadButton
+                  file={file}
+                  handleFileChange={handleFileChange}
+                  label="Upload new file"
+                ></FileUploadButton>
+                <Typography sx={{ fontWeight: "bold", color: 'white'}} poppins="true">
+                  OR
+                </Typography>
+                <Button onClick={handleSubmit} variant="contained" sx={{ mx: 2, color: "white"}} endIcon={<SendIcon />}>
+                  Submit this file
+                </Button>
               </Box>
-              <Box>
-              {loading ? <Typography poppins="true">sending...</Typography> : <></>}
-              </Box>
+              <Box>{loading ? <Typography poppins="true" sx={{color: 'white'}}>sending...</Typography> : <></>}</Box>
             </Box>
             <PDFView file={file} />
           </Box>
@@ -100,10 +112,10 @@ function App() {
           <Box
             sx={{
               display: "flex",
-              flexDirection: 'row',
-              justifyContent: 'center',
-              alignItems: 'center',
-              width: '100%'
+              flexDirection: "row",
+              justifyContent: "center",
+              alignItems: "center",
+              width: "100%",
             }}
           >
             <DragandDropFile file={file} handleFileChange={handleFileChange} />
