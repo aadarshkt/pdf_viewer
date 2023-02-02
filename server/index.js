@@ -15,23 +15,8 @@ const PORT = process.env.PORT || 8000;
 app.post("/upload", upload.single("file"), (req, res) => {
   // Read the contents of the uploaded file
   //name type file req.body
-  const inputPath = req.file.path;
-  const outputPath = `compressed-${req.file.originalname}`;
-
-  execSync(`gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/screen -dNOPAUSE -dQUIET -dBATCH -sOutputFile=${outputPath} ${inputPath}`);
-
-  fs.stat(outputPath, (error, stats) => {
-    if (error) {
-      console.error(error);
-      res.status(500).send('Error while compressing file');
-    } else {
-      console.log(`File size reduced to ${stats.size} bytes`);
-      res.send('File compressed successfully');
-    }
-  });
-
-  console.log(req.file);
   const file = fs.readFileSync(req.file.path);
+  console.log(file);
 
   // Connect to the database
   const connection = mysql.createConnection({
@@ -55,5 +40,5 @@ app.post("/upload", upload.single("file"), (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log('Listening on port 8000!');
+    console.log('Listening on port' + PORT + '!');
 })

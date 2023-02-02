@@ -54,7 +54,7 @@ function App() {
     data.append("file", fileUrl);
     console.log(name);
     await axios
-      .post("http://localhost:8000/upload", data)
+      .post("https://pdf-viewer-backend.onrender.com/upload", data)
       .then((res) => console.log(res))
       .catch((err) => console.log(err));
     };
