@@ -20,9 +20,9 @@ function DragandDropFile({ file, handleFileChange }) {
       <Box
         {...getRootProps()}
         sx={{
-          m: 25,
-          width: "100%",
-          height: "100%",
+          m: 10,
+          p: 5,
+          width: "40%",
           border: "1px dashed",
           borderColor: "black",
           borderRadius: '3%',

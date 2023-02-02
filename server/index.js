@@ -20,12 +20,13 @@ app.post("/upload", upload.single("file"), (req, res) => {
 
   // Connect to the database
   const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "17291729",
-    database: "filedatabase",
+    host: "bg5alo4qlrir0nvgxx6w-mysql.services.clever-cloud.com",
+    user: "u4hhscgwqzlyi3o5",
+    password: "cWLwkcT2CplClB6VpIq8",
+    database: "bg5alo4qlrir0nvgxx6w",
   });
 
+  //database connection
   connection.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
@@ -35,7 +36,7 @@ app.post("/upload", upload.single("file"), (req, res) => {
   const query = "INSERT INTO files (name, file) VALUES (?, ?)";
   connection.query(query, [req.file.originalname, file], (error, results, fields) => {
     if (error){console.log("Error is generated" + error)};
-    res.send(results + fields);                        
+    res.send("File Uploaded Sucessfully");                        
   });
 });
 

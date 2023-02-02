@@ -5,7 +5,7 @@ import React from 'react'
 const Header = () => {
   return (
     <Box sx={{display: 'flex', justifyContent: 'left', width: '100%'}}>
-        <Typography sx={{p: 2, fontWeight: 'bold'}}>PDF Viewer</Typography>
+        <Typography sx={{p: 2, fontWeight: 'bold', fontSize: '30px'}} poppins="true">PDF Viewer</Typography>
     </Box>
   )
 }
